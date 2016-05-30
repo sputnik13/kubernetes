@@ -1,33 +1,4 @@
-<!-- BEGIN MUNGE: UNVERSIONED_WARNING -->
-
-<!-- BEGIN STRIP_FOR_RELEASE -->
-
-<img src="http://kubernetes.io/img/warning.png" alt="WARNING"
-     width="25" height="25">
-<img src="http://kubernetes.io/img/warning.png" alt="WARNING"
-     width="25" height="25">
-<img src="http://kubernetes.io/img/warning.png" alt="WARNING"
-     width="25" height="25">
-<img src="http://kubernetes.io/img/warning.png" alt="WARNING"
-     width="25" height="25">
-<img src="http://kubernetes.io/img/warning.png" alt="WARNING"
-     width="25" height="25">
-
-<h2>PLEASE NOTE: This document applies to the HEAD of the source tree</h2>
-
-If you are using a released version of Kubernetes, you should
-refer to the docs that go with that version.
-
-Documentation for other releases can be found at
-[releases.k8s.io](http://releases.k8s.io).
-</strong>
---
-
-<!-- END STRIP_FOR_RELEASE -->
-
-<!-- END MUNGE: UNVERSIONED_WARNING -->
-
-# L4 Ingress
+# Ingress L4 Proposal
 
 ## Abstract
 
@@ -196,6 +167,85 @@ spec:
 ```
 
 
-<!-- BEGIN MUNGE: GENERATED_ANALYTICS -->
-[![Analytics](https://kubernetes-site.appspot.com/UA-36037335-10/GitHub/docs/proposals/l4-ingress.md?pixel)]()
-<!-- END MUNGE: GENERATED_ANALYTICS -->
+## State of L4 Protocol Support in Cloud Providers
+
+### Summary
+
+|           | TCP | UDP | TLS |
+| --------- | --- | --- | --- |
+| AWS       |  x  |     |  x  |
+| GCE       |  x  |  x  |     |
+| Mesos     |  ?  |  ?  |  ?  |
+| Openstack |  x  |  x  |  x  |
+| Rackspace |  x  |  x  |     |
+| vSphere   |  x  |  x  |  x  |
+
+### AWS
+
+#### Protocols
+
+ - HTTP
+ - HTTPS
+ - TCP
+ - TLS
+
+#### Security Groups
+
+Required for each LB instance
+
+#### Static IP
+
+No support for static IP
+
+### GCE
+
+#### Protocols
+
+ - HTTP
+ - HTTPS
+ - TCP
+ - UDP
+
+### Mesos
+
+### Openstack
+
+ - TCP
+ - UDP
+
+### Rackspace
+
+ - TCP
+ - UDP
+
+The following protocols are advertised but they seem like convenience options
+that map to a TCP or UDP port as appropriate, rather than actual support for
+the underlying protocol.
+
+ - DNS
+ - FTP
+ - HTTP
+ - HTTPS
+ - IMPAS
+ - IMPAv2
+ - IMPAv3
+ - IMPAv4
+ - LDAP
+ - LDAPS
+ - MYSQL
+ - POP3
+ - POP3S
+ - SFTP
+ - SMTP
+
+### vSphere
+
+Supported protocols for vSphere vary based on the load balancer appliance used
+with vSphere.  An in-cluster (k8s) software load balancer is currently
+available in contrib that use NGINX as the software load balancing solution.
+
+ - HTTP
+ - HTTPS
+ - TCP
+ - TLS
+ - UDP
