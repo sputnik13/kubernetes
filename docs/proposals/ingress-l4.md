@@ -182,6 +182,8 @@ spec:
 
 ### AWS
 
+AWS supports TCP
+
 #### Protocols
 
  - HTTP
