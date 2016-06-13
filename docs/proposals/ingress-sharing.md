@@ -1,6 +1,6 @@
 # Ingress Resource Sharing
 
-## State of L4 Support in Cloud Providers
+## State of Load Balancer Sharing in Cloud Providers
 
 ### AWS
 

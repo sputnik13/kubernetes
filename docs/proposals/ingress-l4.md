@@ -174,11 +174,13 @@ spec:
 |           | TCP | UDP | TLS |
 | --------- | --- | --- | --- |
 | AWS       |  x  |     |  x  |
-| GCE       |  x  |  x  |     |
+| GCE       |  x  |  x  | (1) |
 | Mesos     |  ?  |  ?  |  ?  |
 | Openstack |  x  |  x  |  x  |
 | Rackspace |  x  |  x  |     |
 | vSphere   |  x  |  x  |  x  |
+
+(1) GCE has TLS as an alpha service
 
 ### AWS
 
